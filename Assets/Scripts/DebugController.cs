@@ -24,6 +24,8 @@ public class DebugController : MonoBehaviour {
 
 	// Update is called once per frame
 	void updatePlayerPosition() {
+		if (position == null || heading == null)
+						return;
 		string degrees = transform.eulerAngles.z.ToString ("F2");
 		string x = transform.position.x.ToString ("F2");
 		string y = transform.position.y.ToString ("F2");
