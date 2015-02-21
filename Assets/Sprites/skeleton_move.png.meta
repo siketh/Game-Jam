@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9b60ac0965dc2074d98a5d06a0103da4
+guid: 4dddf6e7a10ed0149b6440483722d68f
 TextureImporter:
   fileIDToRecycleName:
     21300000: skeleton_move_0
@@ -29,10 +29,10 @@ TextureImporter:
   grayScaleToAlpha: 0
   generateCubemap: 0
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: -3
   maxTextureSize: 1024
   textureSettings:
-    filterMode: -1
+    filterMode: 1
     aniso: 16
     mipBias: -1
     wrapMode: 1
