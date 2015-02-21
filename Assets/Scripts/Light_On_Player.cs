@@ -10,6 +10,7 @@ public class Light_On_Player : MonoBehaviour
     public float minRadius = 1;
     public bool isPro = false;
 	public GameObject LightLocation;
+	public Color LightTint;
 	
     private List<Light2D> lightsInScene = new List<Light2D>();
     private Light2D selectedLight;
@@ -36,6 +37,9 @@ public class Light_On_Player : MonoBehaviour
     bool wasHit = false;
     void Update()
     {
+		if (selectedLight != null && selectedLight.LightColor != LightTint)
+						selectedLight.LightColor = LightTint;
+
         if (Input.GetKeyDown(KeyCode.F))
         {
             Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, !Screen.fullScreen);
@@ -100,7 +104,7 @@ public class Light_On_Player : MonoBehaviour
 
     void CreateLight(Vector3 position)
     {
-		selectedLight = Light2D.Create(LightLocation.transform.position, new Color(1f, 0.5f, 0f, 0f), initialRadius);
+		selectedLight = Light2D.Create(LightLocation.transform.position, LightTint, initialRadius);
         selectedLight.EnableEvents = true;
 		selectedLight.LightConeAngle = 45;
 		selectedLight.LightConeStart = 90;

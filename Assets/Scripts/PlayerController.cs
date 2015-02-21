@@ -25,11 +25,11 @@ public class PlayerController : MonoBehaviour {
 
 		}
 		if (Input.GetKey (KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) {
-			transform.position += -transform.up * Time.deltaTime * movementSpeed;
+			transform.position += transform.up * Time.deltaTime * movementSpeed;
 			moved = true;
 		}
 		if (Input.GetKey (KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) {
-			transform.position -= -transform.up * Time.deltaTime * movementSpeed;
+			transform.position -= transform.up * Time.deltaTime * movementSpeed;
 			moved = true;
 		}/*
 		if (moved)
