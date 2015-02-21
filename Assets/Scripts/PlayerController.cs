@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour {
 	
 	void OnTriggerEnter2D( Collider2D col )
 	{
-		if (col.gameObject.tag == "agent") 
+		if (col.gameObject.tag == "Enemy") 
 		{
 			adjacentAgents.Add(col.gameObject);
 		}
@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour {
 	
 	void OnTriggerExit2D( Collider2D col )
 	{
-		if (col.gameObject.tag == "agent") 
+		if (col.gameObject.tag == "Enemy") 
 		{
 			adjacentAgents.Remove(col.gameObject);
 			
