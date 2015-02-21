@@ -5,8 +5,8 @@ public class CameraController : MonoBehaviour {
 	
 	public Transform target;
 	public float smoothTime = 0.3f;
-	public float tabbedSize = 3f;
-	public float defaultSize = 10f;
+	public float tabbedSize = 10f;
+	public float defaultSize = 3f;
 
 	private float duration = 1.0f;
 	private float elapsed = 0;
