@@ -154,7 +154,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1031332869}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -171,6 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1044466959}
+  smoothTime: .800000012
 --- !u!1 &1044466956
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,7 +182,6 @@ GameObject:
   - 4: {fileID: 1044466959}
   - 212: {fileID: 1044466958}
   - 114: {fileID: 1044466957}
-  - 114: {fileID: 1044466960}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -197,11 +197,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1044466956}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9700918f83e67a42a30a13b574d6d61, type: 3}
+  m_Script: {fileID: 11500000, guid: db0cc8ea478bcc84f8f021af15f1cfa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 2
   adjacentAgents: []
+  animate: {fileID: 0}
 --- !u!212 &1044466958
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -222,7 +223,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9b60ac0965dc2074d98a5d06a0103da4, type: 3}
+  m_Sprite: {fileID: 21300012, guid: 4dddf6e7a10ed0149b6440483722d68f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1044466959
 Transform:
@@ -230,24 +231,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1044466956}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: -4.37113883e-08}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &1044466960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1044466956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 440a8804a9653184ba12deb3604620a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 1044466959}
 --- !u!1 &1588264871
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,7 +247,7 @@ GameObject:
   - 4: {fileID: 1588264873}
   - 212: {fileID: 1588264872}
   m_Layer: 0
-  m_Name: brick
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -284,7 +273,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 89fff2a6aa35e3c48a0720a85acef956, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6a8ebbbfa897bda44bbffc3f39706380, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1588264873
 Transform:

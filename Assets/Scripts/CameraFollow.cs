@@ -4,6 +4,9 @@ using System.Collections;
 public class CameraFollow : MonoBehaviour {
 	
 	public Transform target;
+	public float smoothTime = 0.3f;
+	
+	private Vector3 velocity = Vector3.zero;
 	
 	void Update () 
 	{
@@ -13,6 +16,7 @@ public class CameraFollow : MonoBehaviour {
 
 		Vector3 newPos = new Vector3(posX, posY, posZ);
 
-		transform.position = newPos;
+		transform.position = Vector3.SmoothDamp (transform.position, newPos, ref velocity, smoothTime);
+
 	}
 }

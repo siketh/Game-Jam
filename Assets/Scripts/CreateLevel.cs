@@ -9,7 +9,7 @@ public class CreateLevel : MonoBehaviour {
 	void Start () {
 		for (int i=0; i<rows; i++) {
 			for(int j=0; j<cols;j++){
-				Instantiate();
+				//Instantiate();
 			}
 		}
 	

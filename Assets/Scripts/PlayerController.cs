@@ -9,27 +9,27 @@ public class PlayerController : MonoBehaviour {
 	public Animation animate;
 
 	void Start() {
-		GameObject sprite = transform.FindChild("PlayerSprite").gameObject;
-		animate = sprite.animation;
+		//GameObject sprite = transform.FindChild("PlayerSprite").gameObject;
+		//animate = sprite.animation;
 	}
 
 	void Update () 
 	{
 		bool moved = false;
-		if (Input.GetKey (KeyCode.RightArrow)) {
+		if (Input.GetKey (KeyCode.D)) {
 				transform.Rotate (0f, 0f, -2.5f);
 				
 		}
-		if (Input.GetKey (KeyCode.LeftArrow)) {
+		if (Input.GetKey (KeyCode.A)) {
 				transform.Rotate (0f, 0f, 2.5f);
 
 		}
-		if (Input.GetKey (KeyCode.UpArrow)) {
-			transform.position += transform.up * Time.deltaTime * movementSpeed;
+		if (Input.GetKey (KeyCode.W)) {
+			transform.position += -transform.up * Time.deltaTime * movementSpeed;
 			moved = true;
 		}
-		if (Input.GetKey (KeyCode.DownArrow)) {
-			transform.position -= transform.up * Time.deltaTime * movementSpeed;
+		if (Input.GetKey (KeyCode.S)) {
+			transform.position -= -transform.up * Time.deltaTime * movementSpeed;
 			moved = true;
 		}
 	}
