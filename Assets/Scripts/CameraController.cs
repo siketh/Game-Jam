@@ -5,8 +5,8 @@ public class CameraController : MonoBehaviour {
 	
 	public Transform target;
 	public float smoothTime = 0.3f;
-	public float maxSize;
-	public float minSize;
+	public float tabbedSize = 3f;
+	public float defaultSize = 10f;
 
 	private float duration = 1.0f;
 	private float elapsed = 0;
@@ -70,7 +70,7 @@ public class CameraController : MonoBehaviour {
 			if (elapsed <= 1.0f) 
 			{
 				elapsed += Time.deltaTime * duration;
-				Camera.main.orthographicSize = Mathf.Lerp(minSize, maxSize, elapsed);
+				Camera.main.orthographicSize = Mathf.Lerp(defaultSize, tabbedSize, elapsed);
 			}
 		}
 		else
@@ -78,7 +78,7 @@ public class CameraController : MonoBehaviour {
 			if (elapsed >= 0f) 
 			{
 				elapsed -= Time.deltaTime * duration;
-				Camera.main.orthographicSize = Mathf.Lerp(minSize, maxSize, elapsed);
+				Camera.main.orthographicSize = Mathf.Lerp(defaultSize, tabbedSize, elapsed);
 			}
 		}
 	}
