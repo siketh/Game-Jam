@@ -102,6 +102,8 @@ public class Light_On_Player : MonoBehaviour
     {
 		selectedLight = Light2D.Create(LightLocation.transform.position, new Color(1f, 0.5f, 0f, 0f), initialRadius);
         selectedLight.EnableEvents = true;
+		selectedLight.LightConeAngle = 45;
+		selectedLight.LightConeStart = 90;
 		selectedLight.gameObject.transform.parent = LightLocation.transform;
 
         if (isPro)

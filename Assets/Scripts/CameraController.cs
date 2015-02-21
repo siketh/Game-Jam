@@ -19,7 +19,7 @@ public class CameraController : MonoBehaviour {
 
 		if (Input.GetKey(KeyCode.Tab)) 
 		{
-			transform.camera.orthographicSize() = 10;
+			transform.camera.orthographicSize = 10;
 			transform.position = Vector3.SmoothDamp (transform.position, newPos, ref velocity, smoothTime);
 		}
 	}
