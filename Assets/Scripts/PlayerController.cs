@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour {
 			moved = true;
 		}
 		if (Input.GetKey (KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) {
-			transform.position -= transform.up * Time.deltaTime * movementSpeed;
+			transform.position -= transform.up * Time.deltaTime * movementSpeed/2;
 			moved = true;
 		}/*
 		if (moved)

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class EnemyController : MonoBehaviour {
 	public enum AIType
@@ -14,6 +15,7 @@ public class EnemyController : MonoBehaviour {
 	public float rotationSpeed = 1f;
 	public float lookAheadMultiplier = 5f;
 	public float maxLookAheadDistance = 5f;
+	public float avoidDistance = 5f;
 
 	public List<string> AvoidTags;
 
@@ -76,8 +78,44 @@ public class EnemyController : MonoBehaviour {
 
 			break;
 		case AIType.SeekAvoid:
-			Debug.Log("Avoiding");
+
+			List<GameObject> allTags = new List<GameObject>();
+			for(int i=0; i < AvoidTags.Count;i++)
+				allTags.AddRange(GameObject.FindGameObjectsWithTag(AvoidTags[i]));
+
+			var inRangeObjects = allTags.Where(x=> Vector3.Distance(x.transform.position, transform.position) < avoidDistance).ToList();
+
+			difVec = HeadToTarget(target.position);
+
+			inRangeObjects.ForEach( inRangeObj => 
+      		 {
+				Vector3 vecDif = (inRangeObj.transform.position - transform.position);
+				var vecDist = vecDif.magnitude;
+				vecDif.Normalize();
+
+				//var perpVector = new Vector3(-vecDif.y, vecDif.x, vecDif.z);
+
+				difVec -= vecDist*vecDif/avoidDistance;
+
+
+
+//				double theta = Mathf.Atan2(vecDif.y, vecDif.x);
+//
+//				if(theta > 0)
+//				{
+//
+//				}
+
+
+			});
+
+
+			transform.position += difVec * moveSpeed * Time.deltaTime;
+			
+
 		break;
+
+
 		}
 	}
 }
