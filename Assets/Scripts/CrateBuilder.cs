@@ -3,17 +3,12 @@ using System.Collections;
 
 public class CrateBuilder : MonoBehaviour {
 	public GameObject CratePrefab;
-	public int numCrates = 2;
+	public int numCrates;
 
 	public float minBackgroundBound;
 	public float maxBackgroundBound;
 	private float xCoord;
 	private float yCoord;
-
-	public void SetCrate()
-	{
-
-	}
 
 	// Use this for initialization
 	void Start () 
