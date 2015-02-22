@@ -9,6 +9,8 @@ public class CreateGameMap : MonoBehaviour {
 	public int MapHeight = 10;
 	public int MapZ = 10;
 
+	public int num_fires = 100;
+	public int num_spiders = 100;
 
 	
 	// Use this for initialization
@@ -25,7 +27,7 @@ public class CreateGameMap : MonoBehaviour {
 		MeshFilter mf = go.GetComponent<MeshFilter> ();
 		Vector3 planeVector = (mf.mesh.bounds.max - mf.mesh.bounds.min) / 2.0f;
 
-		int num_fires = (int)Random.Range (25,50 );
+		//int num_fires = (int)Random.Range (25,50 );
 		Vector3 myVector = Vector3.zero;
 		Vector3 myVector2 = Vector3.zero;
 
@@ -37,7 +39,7 @@ public class CreateGameMap : MonoBehaviour {
 			go = (GameObject)Instantiate (FirePrefab, myVector, Quaternion.identity);
 			go.transform.parent = this.transform;
 		}
-		for(int i= 0; i<num_fires; i++){
+		for(int i= 0; i<num_spiders; i++){
 			float x2 = Random.Range(-MapWidth*5, MapWidth*5);
 			float y2 =Random.Range(-MapHeight*5,MapHeight*5);
 			myVector2.x = x2;
@@ -46,9 +48,6 @@ public class CreateGameMap : MonoBehaviour {
 			go.transform.parent = this.transform;
 		}
 		
-	
-
-
 	}
 	
 	// Update is called once per frame

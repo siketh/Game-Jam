@@ -10,11 +10,15 @@ public class playFireToggle : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		allFires = new List<GameObject> (GameObject.FindGameObjectsWithTag ("Fire"));
+		//allFires = new List<GameObject> (GameObject.FindGameObjectsWithTag ("Fire"));
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+		if(allFires == null || allFires.Count == 0)
+			allFires = new List<GameObject> (GameObject.FindGameObjectsWithTag ("Fire"));
+			
 
 		allFires.Where (x => Vector3.Distance (x.transform.position, transform.position) < distanceTurnOn ).ToList ().ForEach (light => {
 			(light.GetComponent<fireToggle>() as fireToggle).setFireOn(true);

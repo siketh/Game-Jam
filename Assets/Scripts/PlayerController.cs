@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class PlayerController : MonoBehaviour {
 	//public Light spotlight;
 	public float movementSpeed = 2f;
+	public float rotateSpeed = 4;
 	public List<GameObject> adjacentAgents = new List<GameObject>();
 	public Animation animate;
 
@@ -17,11 +18,11 @@ public class PlayerController : MonoBehaviour {
 	{
 		bool moved = false;
 		if (Input.GetKey (KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) {
-				transform.Rotate (0f, 0f, -2.5f);
+			transform.Rotate (0f, 0f, -rotateSpeed);
 				
 		}
 		if (Input.GetKey (KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) {
-				transform.Rotate (0f, 0f, 2.5f);
+			transform.Rotate (0f, 0f, rotateSpeed);
 
 		}
 		if (Input.GetKey (KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) {

@@ -7,7 +7,10 @@ public class HideLightReactor : MonoBehaviour {
 	SpriteRenderer spriteRenderer;
 	Animator an;
 	SpiderControler sc;
-	
+	public bool disableAnimation = true;
+
+	int lightHitCount = 0;
+
 	void Start ()
 	{
 		/* Make sure you register your event methods in the 'OnStart' or 'OnAwake' methods
@@ -24,8 +27,11 @@ public class HideLightReactor : MonoBehaviour {
 		sc = gameObject.GetComponent<SpiderControler> ();
 
 		//sc.SetControllerDisabled (true);
-		an.enabled = false;
-		renderer.enabled = false;
+		if (disableAnimation) {
+			if(an != null)
+						an.enabled = false;
+						renderer.enabled = false;
+				}
 	
 	}
 
@@ -46,16 +52,21 @@ public class HideLightReactor : MonoBehaviour {
          * gameObject is equal to the one this script is in (if needed) */
 		if (_go.GetInstanceID() == gameObject.GetInstanceID())
 		{
+			lightHitCount++;
 			// GameObject just became visible by light object
 			//Debug.Log("Object Entered Light");
 			
 			// Change color [For Visualization]
 //			gameObject.SetActive(true);
-			renderer.enabled = true;
-			an.enabled = true;
-			//sc.SetControllerDisabled (false);
+			if(disableAnimation)
+			{
+			if(an != null)
+				
+				an.enabled = true;
+				renderer.enabled = true;
+			}//sc.SetControllerDisabled (false);
 			
-			gameObject.renderer.material.color = Color.green;
+//			gameObject.renderer.material.color = Color.green;
 		}
 	}
 	
@@ -70,7 +81,7 @@ public class HideLightReactor : MonoBehaviour {
 			//Debug.Log("Object Inside Light");
 			
 			// Change color [For Visualization]
-			gameObject.renderer.material.color = Color.Lerp(gameObject.renderer.material.color, Color.red, Time.deltaTime * 0.5f);
+//			gameObject.renderer.material.color = Color.Lerp(gameObject.renderer.material.color, Color.red, Time.deltaTime * 0.5f);
 		}
 	}
 	
@@ -85,10 +96,20 @@ public class HideLightReactor : MonoBehaviour {
 			//Debug.Log("Object Exited Light");
 			
 			// Change color [For Visualization]
-			gameObject.renderer.material.color = kColor;
+//			gameObject.renderer.material.color = kColor;
 			//sc.SetControllerDisabled (true);
-			renderer.enabled = false;
-			an.enabled = false;
+
+			lightHitCount--;
+
+			if(lightHitCount == 0)
+			{
+				if(disableAnimation){
+					renderer.enabled = false;
+			if(an != null)
+					
+					an.enabled = false;
+				}
+			}
 //			gameObject.SetActive(false);
 		
 		}

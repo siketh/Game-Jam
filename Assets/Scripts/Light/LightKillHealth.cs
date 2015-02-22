@@ -52,7 +52,7 @@ public class LightKillHealth : MonoBehaviour {
 			// Change color [For Visualization]
 //			gameObject.SetActive(true);
 			renderer.enabled = true;
-			gameObject.renderer.material.color = Color.green;
+//			gameObject.renderer.material.color = Color.green;
 		}
 	}
 	
@@ -67,7 +67,7 @@ public class LightKillHealth : MonoBehaviour {
 			//Debug.Log("Object Inside Light");
 			
 			// Change color [For Visualization]
-			gameObject.renderer.material.color = Color.Lerp(gameObject.renderer.material.color, Color.red, Time.deltaTime * 0.5f);
+//			gameObject.renderer.material.color = Color.Lerp(gameObject.renderer.material.color, Color.red, Time.deltaTime * 0.5f);
 		
 			float distanceSqr = (_light.transform.position - transform.position).sqrMagnitude;
 
@@ -96,7 +96,7 @@ public class LightKillHealth : MonoBehaviour {
 			//Debug.Log("Object Exited Light");
 			
 			// Change color [For Visualization]
-			gameObject.renderer.material.color = kColor;
+//			gameObject.renderer.material.color = kColor;
 			renderer.enabled = false;
 //			gameObject.SetActive(false);
 		
