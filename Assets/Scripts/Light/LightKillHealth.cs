@@ -47,7 +47,7 @@ public class LightKillHealth : MonoBehaviour {
 		if (_go.GetInstanceID() == gameObject.GetInstanceID())
 		{
 			// GameObject just became visible by light object
-			Debug.Log("Object Entered Light");
+			//Debug.Log("Object Entered Light");
 			
 			// Change color [For Visualization]
 //			gameObject.SetActive(true);
@@ -64,16 +64,16 @@ public class LightKillHealth : MonoBehaviour {
 		if (_go.GetInstanceID() == gameObject.GetInstanceID())
 		{
 			// GameObject is currently visible by light object
-			Debug.Log("Object Inside Light");
+			//Debug.Log("Object Inside Light");
 			
 			// Change color [For Visualization]
 			gameObject.renderer.material.color = Color.Lerp(gameObject.renderer.material.color, Color.red, Time.deltaTime * 0.5f);
 		
 			float distanceSqr = (_light.transform.position - transform.position).sqrMagnitude;
 
-			currentHealth -= Time.deltaTime*DamagePerSecond/distanceSqr;
+			currentHealth -= Mathf.Min(Time.deltaTime*DamagePerSecond, Time.deltaTime*DamagePerSecond/distanceSqr);
 
-			Debug.Log("I'm dying! : " + currentHealth);
+			//Debug.Log("I'm dying! : " + currentHealth);
 
 			if(currentHealth < 0)
 			{
@@ -93,7 +93,7 @@ public class LightKillHealth : MonoBehaviour {
 		if (_go.GetInstanceID() == gameObject.GetInstanceID())
 		{
 			// GameObject just left the visibility of the light object
-			Debug.Log("Object Exited Light");
+			//Debug.Log("Object Exited Light");
 			
 			// Change color [For Visualization]
 			gameObject.renderer.material.color = kColor;
