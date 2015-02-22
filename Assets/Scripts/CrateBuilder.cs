@@ -5,6 +5,11 @@ public class CrateBuilder : MonoBehaviour {
 	public GameObject CratePrefab;
 	public int numCrates = 2;
 
+	public float minBackgroundBound;
+	public float maxBackgroundBound;
+	private float xCoord;
+	private float yCoord;
+
 	public void SetCrate()
 	{
 
@@ -16,7 +21,10 @@ public class CrateBuilder : MonoBehaviour {
 		//list of game objects that are crates
 		for(int i=0; i<numCrates; i++)
 		{
-			Vector3 MapPlace = new Vector3(i,i,0);
+			xCoord = Random.Range(minBackgroundBound, maxBackgroundBound);
+			yCoord = Random.Range(minBackgroundBound, maxBackgroundBound);
+
+			Vector3 MapPlace = new Vector3(xCoord,yCoord,0);
 
 			GameObject Crate = (GameObject)Instantiate (CratePrefab, MapPlace, Quaternion.identity);
 
