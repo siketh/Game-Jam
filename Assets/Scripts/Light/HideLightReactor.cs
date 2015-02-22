@@ -5,6 +5,8 @@ public class HideLightReactor : MonoBehaviour {
 
 	private Color kColor;
 	SpriteRenderer spriteRenderer;
+	Animator an;
+	SpiderControler sc;
 	
 	void Start ()
 	{
@@ -18,7 +20,11 @@ public class HideLightReactor : MonoBehaviour {
 		// Keep the initial object color [For Visualization]
 		kColor = gameObject.renderer.material.color;
 		spriteRenderer = gameObject.GetComponent<SpriteRenderer> ();
+		an = gameObject.GetComponent<Animator> ();
+		sc = gameObject.GetComponent<SpiderControler> ();
 
+		//sc.SetControllerDisabled (true);
+		an.enabled = false;
 		renderer.enabled = false;
 	
 	}
@@ -41,11 +47,14 @@ public class HideLightReactor : MonoBehaviour {
 		if (_go.GetInstanceID() == gameObject.GetInstanceID())
 		{
 			// GameObject just became visible by light object
-			Debug.Log("Object Entered Light");
+			//Debug.Log("Object Entered Light");
 			
 			// Change color [For Visualization]
 //			gameObject.SetActive(true);
 			renderer.enabled = true;
+			an.enabled = true;
+			//sc.SetControllerDisabled (false);
+			
 			gameObject.renderer.material.color = Color.green;
 		}
 	}
@@ -58,7 +67,7 @@ public class HideLightReactor : MonoBehaviour {
 		if (_go.GetInstanceID() == gameObject.GetInstanceID())
 		{
 			// GameObject is currently visible by light object
-			Debug.Log("Object Inside Light");
+			//Debug.Log("Object Inside Light");
 			
 			// Change color [For Visualization]
 			gameObject.renderer.material.color = Color.Lerp(gameObject.renderer.material.color, Color.red, Time.deltaTime * 0.5f);
@@ -73,11 +82,13 @@ public class HideLightReactor : MonoBehaviour {
 		if (_go.GetInstanceID() == gameObject.GetInstanceID())
 		{
 			// GameObject just left the visibility of the light object
-			Debug.Log("Object Exited Light");
+			//Debug.Log("Object Exited Light");
 			
 			// Change color [For Visualization]
 			gameObject.renderer.material.color = kColor;
+			//sc.SetControllerDisabled (true);
 			renderer.enabled = false;
+			an.enabled = false;
 //			gameObject.SetActive(false);
 		
 		}
