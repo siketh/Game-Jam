@@ -6,13 +6,16 @@ public class EnemyController : MonoBehaviour {
 	public enum AIType
 		{
 		Seek,
-		Pursuit
+		Pursuit,
+		SeekAvoid
 		}
 
 	public float moveSpeed = 1f;
 	public float rotationSpeed = 1f;
 	public float lookAheadMultiplier = 5f;
 	public float maxLookAheadDistance = 5f;
+
+	public List<string> AvoidTags;
 
 	public AIType AIBehavior = AIType.Seek;
 
@@ -26,6 +29,8 @@ public class EnemyController : MonoBehaviour {
 	{
 		target = GameObject.FindGameObjectWithTag ("Player").transform;
 		lastPosition = target.transform.position;
+
+		//AvoidTags.Add(GameObject.FindGameObjectsWithTag ("Crate"));
 	}
 
 	Vector3 HeadToTarget(Vector3 vectorTarget)
@@ -70,13 +75,9 @@ public class EnemyController : MonoBehaviour {
 			}
 
 			break;
+		case AIType.SeekAvoid:
+			Debug.Log("Avoiding");
+		break;
 		}
-
-		//range = Vector2.Distance (transform.position, target.transform.position);
-
-//		transform.Translate(Vector2.MoveTowards(transform.position, 
-//		                                        target.transform.position,
-//		                                        1000f) * moveSpeed * Time.deltaTime);
-
 	}
 }
