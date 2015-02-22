@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CrateLightReactor : MonoBehaviour {
+public class HideLightReactor : MonoBehaviour {
 
 	private Color kColor;
 	SpriteRenderer spriteRenderer;

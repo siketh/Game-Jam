@@ -1,11 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CrateLightReactor : MonoBehaviour {
+public class LightKillHealth : MonoBehaviour {
+
+	public float MaxHealth = 100;
+	public float DamagePerSecond = 10;
+
+	private float currentHealth;
 
 	private Color kColor;
 	SpriteRenderer spriteRenderer;
-	
+
+
 	void Start ()
 	{
 		/* Make sure you register your event methods in the 'OnStart' or 'OnAwake' methods
@@ -18,7 +24,7 @@ public class CrateLightReactor : MonoBehaviour {
 		// Keep the initial object color [For Visualization]
 		kColor = gameObject.renderer.material.color;
 		spriteRenderer = gameObject.GetComponent<SpriteRenderer> ();
-
+		currentHealth = MaxHealth;
 		renderer.enabled = false;
 	
 	}
@@ -62,6 +68,20 @@ public class CrateLightReactor : MonoBehaviour {
 			
 			// Change color [For Visualization]
 			gameObject.renderer.material.color = Color.Lerp(gameObject.renderer.material.color, Color.red, Time.deltaTime * 0.5f);
+		
+			float distanceSqr = (_light.transform.position - transform.position).sqrMagnitude;
+
+			currentHealth -= Time.deltaTime*DamagePerSecond/distanceSqr;
+
+			Debug.Log("I'm dying! : " + currentHealth);
+
+			if(currentHealth < 0)
+			{
+				//dead!
+				//need to trigger death here
+				gameObject.SetActive(false);
+			}
+
 		}
 	}
 	

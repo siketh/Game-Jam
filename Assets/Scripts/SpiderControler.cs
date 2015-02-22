@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Linq;
 
 public class SpiderControler : MonoBehaviour {
 	public PolygonCollider2D[] colliders;
@@ -15,8 +16,19 @@ public class SpiderControler : MonoBehaviour {
 	}
 	public void SetColliderForSprite( int spriteNum )
 	{
-		colliders[currentColliderIndex].enabled = false;
+//		Debug.Log("Set sprite: " + spriteNum);
+
+//		int lastIx = currentColliderIndex;
 		currentColliderIndex = spriteNum;
-		colliders[currentColliderIndex].enabled = true;
+
+		for (int i=0; i < colliders.Length; i++) {
+			colliders[i].enabled = (i == spriteNum);
+		}
+
+		Debug.Log(Time.time + " - One is enabled: " + colliders.Any(x=>x.enabled));
+
+//		colliders[currentColliderIndex].enabled = true;
+//		colliders[lastIx].enabled = false;
+		
 	}
 }
